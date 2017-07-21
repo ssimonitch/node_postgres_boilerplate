@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "--"
+echo "Rebuilding test database with seed data"
+echo "--"
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+psql pg_demo_db < migrations/schema.down.sql
+psql pg_demo_db < migrations/schema.up.sql
+psql pg_demo_db < migrations/seed.sql
